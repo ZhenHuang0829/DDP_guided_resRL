@@ -1,0 +1,5 @@
+# Optional dependencies for rendering recorded real-robot motion.
+# FFmpeg and a Panda MuJoCo model are also required; see the replay README.
+mujoco==3.3.7
+numpy>=1.24,<3
+Pillow>=10

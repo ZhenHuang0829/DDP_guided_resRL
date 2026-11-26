@@ -1,0 +1,358 @@
+{
+  "coordinate_frame": "panda_link8",
+  "reference": "command_plan",
+  "sample_spacing_s": 0.025,
+  "aggregation": "Linear time alignment of each processed run followed by an equal-weight mean over runs; no extrapolation.",
+  "errors": "Error columns average the per-run error magnitudes, not the error of the averaged Cartesian path.",
+  "use": "Qualitative visualization only. Table metrics use original full-motion-window per-run statistics, then repeat and trajectory means.",
+  "source_sha256": {
+    "analysis_20261118_all_0g/plot_series_25ms.csv.gz": "484845deaccb8de13ada8589e8835ad2145d95b4b9de84657e5860b36cf9b9c5",
+    "analysis_20261118_all_0g/per_trajectory.csv": "3141bff3c694e2aa5421cbd6e3a5b12dc49e90c68c1d80d3d73a68d6d862a470",
+    "analysis_20261118_all_200g/plot_series_25ms.csv.gz": "b59b0171f6c22d5c9e661fd0f9b8d7e23b0056c9bbf487f568b5f2ab977a6297",
+    "analysis_20261118_all_200g/per_trajectory.csv": "d77fa62ce0f80e5b9db1e21510d270529f4270b80fbeba808b006c5276cf6e61",
+    "analysis_20261118_all_1000g/plot_series_25ms.csv.gz": "509e8b5a57c71a7e1eefca2adef5f682743085566e8b5d8f6587037c029d4dc8",
+    "analysis_20261118_all_1000g/per_trajectory.csv": "6ec9967b3976626037eeab4b213465fdc87a9dd482cad888e5fc8b8ed2834d8f"
+  },
+  "curves": [
+    {
+      "example": "training_joint_sine",
+      "method": "Slotine-Li",
+      "payload_kg": 0.0,
+      "trajectory_id": "panda_ddp_joint_sine",
+      "n_runs": 3,
+      "view": "3d",
+      "samples": 399,
+      "first_time_s": 0.025,
+      "last_time_s": 9.975000000000001,
+      "full_window_ee_position_mean_mm": 2.0267551533018744,
+      "full_window_ee_orientation_mean_deg": 0.387793183773003
+    },
+    {
+      "example": "training_joint_sine",
+      "method": "DDP+GP",
+      "payload_kg": 0.0,
+      "trajectory_id": "panda_ddp_joint_sine",
+      "n_runs": 3,
+      "view": "3d",
+      "samples": 399,
+      "first_time_s": 0.025,
+      "last_time_s": 9.975000000000001,
+      "full_window_ee_position_mean_mm": 1.5547512332666718,
+      "full_window_ee_orientation_mean_deg": 1.447173512097312
+    },
+    {
+      "example": "large_figure8_xz",
+      "method": "Slotine-Li",
+      "payload_kg": 0.0,
+      "trajectory_id": "panda_ddp_figure8_xz_large",
+      "n_runs": 3,
+      "view": "xz",
+      "samples": 399,
+      "first_time_s": 0.025,
+      "last_time_s": 9.975000000000001,
+      "full_window_ee_position_mean_mm": 1.517491029805566,
+      "full_window_ee_orientation_mean_deg": 0.3224818415399276
+    },
+    {
+      "example": "large_figure8_xz",
+      "method": "DDP+GP",
+      "payload_kg": 0.0,
+      "trajectory_id": "panda_ddp_figure8_xz_large",
+      "n_runs": 3,
+      "view": "xz",
+      "samples": 399,
+      "first_time_s": 0.025,
+      "last_time_s": 9.975000000000001,
+      "full_window_ee_position_mean_mm": 0.4207596353927084,
+      "full_window_ee_orientation_mean_deg": 0.2395285134375975
+    },
+    {
+      "example": "orientation_swing",
+      "method": "Slotine-Li",
+      "payload_kg": 0.0,
+      "trajectory_id": "panda_ddp_orientation_swing",
+      "n_runs": 3,
+      "view": "orientation",
+      "samples": 399,
+      "first_time_s": 0.025,
+      "last_time_s": 9.975000000000001,
+      "full_window_ee_position_mean_mm": 1.487969280108558,
+      "full_window_ee_orientation_mean_deg": 0.4548760500150182
+    },
+    {
+      "example": "orientation_swing",
+      "method": "DDP+GP",
+      "payload_kg": 0.0,
+      "trajectory_id": "panda_ddp_orientation_swing",
+      "n_runs": 3,
+      "view": "orientation",
+      "samples": 399,
+      "first_time_s": 0.025,
+      "last_time_s": 9.975000000000001,
+      "full_window_ee_position_mean_mm": 0.3762772259087832,
+      "full_window_ee_orientation_mean_deg": 0.35229858892148
+    },
+    {
+      "example": "heldout_lissajous",
+      "method": "Slotine-Li",
+      "payload_kg": 0.0,
+      "trajectory_id": "panda_ddp_test_lissajous_xy",
+      "n_runs": 3,
+      "view": "3d",
+      "samples": 399,
+      "first_time_s": 0.025,
+      "last_time_s": 9.975000000000001,
+      "full_window_ee_position_mean_mm": 1.6200376869208053,
+      "full_window_ee_orientation_mean_deg": 0.4549528529180816
+    },
+    {
+      "example": "heldout_lissajous",
+      "method": "DDP+GP",
+      "payload_kg": 0.0,
+      "trajectory_id": "panda_ddp_test_lissajous_xy",
+      "n_runs": 3,
+      "view": "3d",
+      "samples": 399,
+      "first_time_s": 0.025,
+      "last_time_s": 9.975000000000001,
+      "full_window_ee_position_mean_mm": 0.7187470005564374,
+      "full_window_ee_orientation_mean_deg": 0.3257491818976473
+    },
+    {
+      "example": "joint_sine_200g",
+      "method": "Slotine-Li",
+      "payload_kg": 0.2,
+      "trajectory_id": "panda_ddp_joint_sine",
+      "n_runs": 1,
+      "view": "3d",
+      "samples": 400,
+      "first_time_s": 0.025,
+      "last_time_s": 10.0,
+      "full_window_ee_position_mean_mm": 2.652106114299264,
+      "full_window_ee_orientation_mean_deg": 0.4469760414229218
+    },
+    {
+      "example": "joint_sine_200g",
+      "method": "DDP+GP",
+      "payload_kg": 0.2,
+      "trajectory_id": "panda_ddp_joint_sine",
+      "n_runs": 1,
+      "view": "3d",
+      "samples": 400,
+      "first_time_s": 0.025,
+      "last_time_s": 10.0,
+      "full_window_ee_position_mean_mm": 1.5898411953567824,
+      "full_window_ee_orientation_mean_deg": 1.476295075611271
+    },
+    {
+      "example": "joint_sine_1kg",
+      "method": "Slotine-Li",
+      "payload_kg": 1.0,
+      "trajectory_id": "panda_ddp_joint_sine",
+      "n_runs": 1,
+      "view": "3d",
+      "samples": 399,
+      "first_time_s": 0.025,
+      "last_time_s": 9.975000000000001,
+      "full_window_ee_position_mean_mm": 7.733221746162658,
+      "full_window_ee_orientation_mean_deg": 1.1833024572657689
+    },
+    {
+      "example": "joint_sine_1kg",
+      "method": "DDP+GP",
+      "payload_kg": 1.0,
+      "trajectory_id": "panda_ddp_joint_sine",
+      "n_runs": 1,
+      "view": "3d",
+      "samples": 399,
+      "first_time_s": 0.025,
+      "last_time_s": 9.975000000000001,
+      "full_window_ee_position_mean_mm": 2.9466854032967222,
+      "full_window_ee_orientation_mean_deg": 1.5032362250506144
+    },
+    {
+      "example": "circle_xy_1kg",
+      "method": "Slotine-Li",
+      "payload_kg": 1.0,
+      "trajectory_id": "panda_ddp_circle_xy",
+      "n_runs": 1,
+      "view": "xy",
+      "samples": 399,
+      "first_time_s": 0.025,
+      "last_time_s": 9.975000000000001,
+      "full_window_ee_position_mean_mm": 7.591147795039063,
+      "full_window_ee_orientation_mean_deg": 1.180087679471156
+    },
+    {
+      "example": "circle_xy_1kg",
+      "method": "DDP+GP",
+      "payload_kg": 1.0,
+      "trajectory_id": "panda_ddp_circle_xy",
+      "n_runs": 1,
+      "view": "xy",
+      "samples": 399,
+      "first_time_s": 0.025,
+      "last_time_s": 9.975000000000001,
+      "full_window_ee_position_mean_mm": 1.1862461908513295,
+      "full_window_ee_orientation_mean_deg": 0.3459473510931914
+    }
+  ],
+  "orientation_components": {
+    "definition": "Rotation vector log(R_reference.T @ R_actual), in degrees, expressed in the reference pose frame; not Euler angles.",
+    "aggregation": "Compute signed components and maximum absolute component per source sample, interpolate each run to the shared grid, then average runs equally. The original orientation-error norm column is unchanged.",
+    "kinematics": {
+      "source": "urdf/panda_no_gripper.urdf",
+      "sha256": "8c150cec81f16c549b2f6514783f96e61a94c53c7e7015a7deb60613ad86a3d4",
+      "base_frame": "panda_link0",
+      "end_frame": "panda_link8",
+      "joint_names": [
+        "panda_joint1",
+        "panda_joint2",
+        "panda_joint3",
+        "panda_joint4",
+        "panda_joint5",
+        "panda_joint6",
+        "panda_joint7",
+        "panda_joint8"
+      ],
+      "joint_types": [
+        "revolute",
+        "revolute",
+        "revolute",
+        "revolute",
+        "revolute",
+        "revolute",
+        "revolute",
+        "fixed"
+      ],
+      "origin_xyz_m": [
+        [
+          0.0,
+          0.0,
+          0.333
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.316,
+          0.0
+        ],
+        [
+          0.0825,
+          0.0,
+          0.0
+        ],
+        [
+          -0.0825,
+          0.384,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.088,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.107
+        ]
+      ],
+      "origin_rpy_rad": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -1.5707963267948966,
+          0.0,
+          0.0
+        ],
+        [
+          1.5707963267948966,
+          0.0,
+          0.0
+        ],
+        [
+          1.5707963267948966,
+          0.0,
+          0.0
+        ],
+        [
+          -1.5707963267948966,
+          0.0,
+          0.0
+        ],
+        [
+          1.5707963267948966,
+          0.0,
+          0.0
+        ],
+        [
+          1.5707963267948966,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "revolute_axes": [
+        [
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "verification": {
+      "source_samples": 12007,
+      "maximum_norm_difference_deg": 1.0894063429134349e-13,
+      "norm_tolerance_deg": 1e-09,
+      "maximum_fk_position_difference_m": 5.551115123125783e-16,
+      "fk_position_tolerance_m": 1e-11
+    }
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "figure": "Figure 5: EE position tracking on a circular trajectory",
+  "data_origin": "Recorded real-robot measurements and recorded references; no simulated trajectories are substituted.",
+  "released_data": [
+    {
+      "filename": "plotted_mean_curves.csv",
+      "sha256": "42e33681e08a7ac3d94a7084e4dbb7604c8a9899b5d33783ca48dd22090e3258",
+      "source_filename": "plotted_mean_curves.csv",
+      "source_sha256": "42e33681e08a7ac3d94a7084e4dbb7604c8a9899b5d33783ca48dd22090e3258",
+      "transfer": "byte-for-byte copy of the audited manuscript plotting input"
+    },
+    {
+      "filename": "selected_case_metrics.csv",
+      "sha256": "ac25af2f31a9c812140d9ab5851c7d22167e7bd4871ae29e5b15f6aeef0265ce",
+      "source_filename": "selected_case_metrics.csv",
+      "source_sha256": "ac25af2f31a9c812140d9ab5851c7d22167e7bd4871ae29e5b15f6aeef0265ce",
+      "transfer": "byte-for-byte copy of the audited manuscript plotting input"
+    }
+  ],
+  "source_audit": {
+    "source_filename": "plot_audit.json",
+    "sha256": "8cfe60a3a139546fad6aadcbde83ef70f6b788492a39ae164a765e87498d4bec"
+  },
+  "source_renderers": [
+    {
+      "source_filename": "plot_hardware_trajectory_case.py",
+      "sha256": "759c8c1114c54b83825f0405c9f409f6b56a47a45eec6bbb3ca8cdd61d54983e"
+    },
+    {
+      "source_filename": "plot_overlay_preview.py",
+      "sha256": "24f398376d70a5fa23183e4f22869bba287a4d91abe2ef4f0c15a8fc7e71b2a8"
+    },
+    {
+      "source_filename": "plot_detail_preview.py",
+      "sha256": "accd9f2ede74a447cb2e75d968588aa544ea3f8c0b504b9d51a3d1516e193eb2"
+    },
+    {
+      "source_filename": "plot_3d_preview.py",
+      "sha256": "041aecb4658af4f113a75c2e9abecb64d376e8a78846cdeef6c8c047c787466b"
+    }
+  ],
+  "archived_upstream_inputs": [
+    {
+      "source_filename": "per_trajectory.csv",
+      "sha256": "3141bff3c694e2aa5421cbd6e3a5b12dc49e90c68c1d80d3d73a68d6d862a470",
+      "included_in_this_directory": false
+    },
+    {
+      "source_filename": "plot_series_25ms.csv.gz",
+      "sha256": "484845deaccb8de13ada8589e8835ad2145d95b4b9de84657e5860b36cf9b9c5",
+      "included_in_this_directory": false
+    },
+    {
+      "source_filename": "per_trajectory_all_metrics.csv",
+      "sha256": "8f4b22621d7e8efa85115d579b28307340692745a6cc35715f8a6fb001bc36f9",
+      "included_in_this_directory": false
+    },
+    {
+      "source_filename": "friction_circle_trace.csv",
+      "sha256": "3dc56cf38cde4e401e4e7328e85cd46c8262f654aec614c3f9ccbada74b7fc1b",
+      "included_in_this_directory": false
+    }
+  ],
+  "upstream_access": "Historical source filenames and hashes identify audited inputs; they are not paths to files supplied by this release. Reproduction reads only the two CSVs in this directory.",
+  "trajectory": "panda_ddp_circle_plan",
+  "added_payload_g": 0,
+  "cohort": "training",
+  "selection": "largest relative reduction in mean EE position error versus the best baseline among 19 trajectories",
+  "selection_relative_reduction": 0.4684938649245943,
+  "repeats": [
+    {
+      "method": "ab05_residual_rl",
+      "run": "panda_ddp_circle_plan_v4_2026-07-09-03-22-59",
+      "n_plot_samples": 400,
+      "start_s": 0.0017125606536865,
+      "end_s": 9.978058099746704,
+      "xyz_error_consistency_max_mm": 1.1324274851176597e-13
+    },
+    {
+      "method": "ddp_gp",
+      "run": "ddp_gp_panda_ddp_circle_plan_20261118_085550_TOh2rH",
+      "n_plot_samples": 400,
+      "start_s": 0.0036475658416748,
+      "end_s": 9.977251768112184,
+      "xyz_error_consistency_max_mm": 1.1723955140041653e-13
+    },
+    {
+      "method": "ddp_gp",
+      "run": "ddp_gp_panda_ddp_circle_plan_20261118_085620_yan30B",
+      "n_plot_samples": 400,
+      "start_s": 0.0019786357879638,
+      "end_s": 9.977593183517456,
+      "xyz_error_consistency_max_mm": 1.1379786002407855e-13
+    },
+    {
+      "method": "ddp_gp",
+      "run": "ddp_gp_panda_ddp_circle_plan_20261118_085649_YW9uHA",
+      "n_plot_samples": 400,
+      "start_s": 0.0021147727966308,
+      "end_s": 9.977762699127195,
+      "xyz_error_consistency_max_mm": 1.0791367799356522e-13
+    },
+    {
+      "method": "friction",
+      "run": "friction_ddp_panda_ddp_circle_plan_2026-08-18-01-16-00",
+      "n_plot_samples": 2498,
+      "start_s": 0.0019052028656005,
+      "end_s": 9.998825073242188,
+      "xyz_error_consistency_max_mm": 1.1945999744966684e-13
+    },
+    {
+      "method": "pure_ddp_no_rl",
+      "run": "panda_ddp_circle_plan_2026-06-08-11-21-10",
+      "n_plot_samples": 399,
+      "start_s": 0.0005898475646972,
+      "end_s": 9.953458547592165,
+      "xyz_error_consistency_max_mm": 1.1546319456101628e-13
+    },
+    {
+      "method": "slotine_li",
+      "run": "slotine_li_panda_ddp_circle_plan_20261118_085209_YjjOAd",
+      "n_plot_samples": 400,
+      "start_s": 0.0011787414550781,
+      "end_s": 9.9788978099823,
+      "xyz_error_consistency_max_mm": 1.1857181902996672e-13
+    },
+    {
+      "method": "slotine_li",
+      "run": "slotine_li_panda_ddp_circle_plan_20261118_085249_e7GFUZ",
+      "n_plot_samples": 400,
+      "start_s": 0.0027878284454345,
+      "end_s": 9.978486061096191,
+      "xyz_error_consistency_max_mm": 1.1257661469699087e-13
+    },
+    {
+      "method": "slotine_li",
+      "run": "slotine_li_panda_ddp_circle_plan_20261118_085319_pjNn97",
+      "n_plot_samples": 400,
+      "start_s": 0.0011851787567138,
+      "end_s": 9.977912902832031,
+      "xyz_error_consistency_max_mm": 1.0824674490095276e-13
+    },
+    {
+      "method": "velocity_control",
+      "run": "panda_ddp_circle_plan_2026-06-09-05-47-15",
+      "n_plot_samples": 401,
+      "start_s": 0.0001623630523681,
+      "end_s": 10.003910779953005,
+      "xyz_error_consistency_max_mm": 9.71445146547012e-14
+    }
+  ],
+  "shared_plot_window_s": [
+    0.025,
+    9.950000000000001
+  ],
+  "reference_max_separation_mm": {
+    "pure_ddp_no_rl": 3.081242147609708,
+    "friction": 0.13828721005976743,
+    "slotine_li": 0.1578543152545954,
+    "ddp_gp": 0.11920942756994085,
+    "velocity_control": 2.496782464488286,
+    "ab05_residual_rl": 0.0
+  },
+  "reference_path_geometry_max_separation_mm": {
+    "pure_ddp_no_rl": 0.013751202699221508,
+    "friction": 0.007201799227661194,
+    "slotine_li": 0.007571316757635807,
+    "ddp_gp": 0.006458845156582334,
+    "velocity_control": 0.030459783028439876,
+    "ab05_residual_rl": 0.0
+  },
+  "timing": "each run retains its recorded command-plan timing; no time shifts or phase alignment; the spatial reference line represents the shared path geometry",
+  "aggregation": "interpolate each run onto a common 25-ms grid, then average each measured quantity across all repeats; average scalar EE errors separately",
+  "metrics": "full-rate existing per-trajectory statistics, not recomputed from plotted samples",
+  "display": "xz overview and enlarged overlaid 3-D detail (10-mm cube near the reference at 5 s), with scalar position errors; no smoothing, rescaling, or grid lines",
+  "released_shape": {
+    "plotted_mean_curves_rows": 2388,
+    "points_per_method": 398,
+    "selected_case_metrics_rows": 6
+  },
+  "display_reference": "The spatial panels display the Proposed recorded mean reference as the shared geometric path. Every method retains its own recorded reference columns and its own scalar tracking errors. Reference timing is not aligned between historical runs.",
+  "renderer": {
+    "script": "plot_circular_trajectory.py",
+    "canvas": "Matplotlib Agg, with PDF vector export",
+    "font": "Times New Roman when installed; STIXGeneral fallback; STIX math text; no TeX dependency",
+    "figure_size_inches": [
+      7.2,
+      6.0
+    ],
+    "png_dpi": 300,
+    "overview_xlim_mm": [
+      195,
+      420
+    ],
+    "overview_zlim_mm": [
+      380,
+      605
+    ],
+    "detail_limits_xyz_mm": [
+      [
+        242,
+        252
+      ],
+      [
+        -5,
+        5
+      ],
+      [
+        405,
+        415
+      ]
+    ],
+    "detail_view_degrees": {
+      "elevation": 23,
+      "azimuth": -62
+    },
+    "error_xlim_s": [
+      0,
+      10
+    ],
+    "error_ylim_mm": [
+      0,
+      4.4
+    ],
+    "layout": "Same axes positions, line colors/styles/widths, legend, detail box, and annotations as the reviewed manuscript render_plot function. Font rendering may differ across systems; PDF byte identity is not claimed."
+  }
+}
