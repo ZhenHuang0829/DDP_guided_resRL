@@ -114,7 +114,7 @@ def reproduce_tracking_summary() -> pd.DataFrame:
         HARDWARE_METHODS,
     )
     result.to_csv(
-        TABLE_DIR / "figure_4_tracking_torque_summary.csv", index=False
+        TABLE_DIR / "figure_5_tracking_torque_summary.csv", index=False
     )
     return result
 
@@ -141,7 +141,7 @@ def reproduce_table_v() -> pd.DataFrame:
     return result
 
 
-def reproduce_figure_1() -> None:
+def reproduce_figure_2() -> None:
     data = pd.read_csv(ROOT / "simulation/learning_efficiency/learning_curves.csv")
     def curve(method):
         rows = data[data["method"] == method].sort_values("training_transitions")
@@ -187,12 +187,12 @@ def reproduce_figure_1() -> None:
     axis.set_axisbelow(True)
     axis.legend(loc="lower center", bbox_to_anchor=(.5, 1.015), ncol=2,
                 frameon=True, borderpad=.3, borderaxespad=0)
-    figure.savefig(FIGURE_DIR / "figure_1_learning_efficiency.png", dpi=220)
-    figure.savefig(FIGURE_DIR / "figure_1_learning_efficiency.pdf")
+    figure.savefig(FIGURE_DIR / "figure_2_learning_efficiency.png", dpi=220)
+    figure.savefig(FIGURE_DIR / "figure_2_learning_efficiency.pdf")
     plt.close(figure)
 
 
-def reproduce_figure_2() -> None:
+def reproduce_figure_3() -> None:
     data = pd.read_csv(ROOT / "simulation/component_ablation/learning_curves.csv")
     styles = [
         ("MLP baseline", "#707070", (0, (3, 1))),
@@ -223,12 +223,12 @@ def reproduce_figure_2() -> None:
     axis.grid(False, which="both", axis="both")
     axis.set_axisbelow(True)
     axis.legend(loc="lower right", frameon=False, labelspacing=.25)
-    figure.savefig(FIGURE_DIR / "figure_2_component_ablation.png", dpi=220)
-    figure.savefig(FIGURE_DIR / "figure_2_component_ablation.pdf")
+    figure.savefig(FIGURE_DIR / "figure_3_component_ablation.png", dpi=220)
+    figure.savefig(FIGURE_DIR / "figure_3_component_ablation.pdf")
     plt.close(figure)
 
 
-def reproduce_figure_4(summary: pd.DataFrame) -> None:
+def reproduce_figure_5(summary: pd.DataFrame) -> None:
     """Match the manuscript's six-metric figure and bold the within-set minima."""
     panels = [
         ("joint_position_rms_deg", "Joint position RMSE (deg)", (0, .5, 1, 1.5, 2)),
@@ -251,7 +251,7 @@ def reproduce_figure_4(summary: pd.DataFrame) -> None:
             # Manuscript bars use the accompanying CSV rounded to three decimals.
             values = subset[metric + "_mean"].round(3).to_numpy()
             if not np.isfinite(values).all() or (values < 0).any() or (values > ticks[-1]).any():
-                raise ValueError(f"Invalid plotted Fig. 4 values: {metric}")
+                raise ValueError(f"Invalid plotted Fig. 5 values: {metric}")
             bars = axis.bar(x + offset, values, width=.34, linewidth=.6, label=set_name, **style)
             labels_at_bars = axis.bar_label(bars, fmt="%.3f", rotation=90, fontsize=7.5, padding=2)
             for annotation, value in zip(labels_at_bars, values):
@@ -271,12 +271,12 @@ def reproduce_figure_4(summary: pd.DataFrame) -> None:
     handles, legend_labels = axes[0, 0].get_legend_handles_labels()
     figure.legend(handles, legend_labels, loc="upper center", ncol=2, frameon=False, fontsize=8.5,
                   borderaxespad=.15, handlelength=1.6, columnspacing=1.6)
-    figure.savefig(FIGURE_DIR / "figure_4_hardware_tracking_and_torque.png", dpi=220)
-    figure.savefig(FIGURE_DIR / "figure_4_hardware_tracking_and_torque.pdf")
+    figure.savefig(FIGURE_DIR / "figure_5_hardware_tracking_and_torque.png", dpi=220)
+    figure.savefig(FIGURE_DIR / "figure_5_hardware_tracking_and_torque.pdf")
     plt.close(figure)
 
 
-def reproduce_figure_6() -> pd.DataFrame:
+def reproduce_figure_7() -> pd.DataFrame:
     data = pd.read_csv(
         ROOT / "hardware/payload_robustness/per_trajectory_metrics.csv"
     )
@@ -290,7 +290,7 @@ def reproduce_figure_6() -> pd.DataFrame:
         .mean()
         .sort_values(["method", "payload_kg"])
     )
-    summary.to_csv(TABLE_DIR / "figure_6_payload_summary.csv", index=False)
+    summary.to_csv(TABLE_DIR / "figure_7_payload_summary.csv", index=False)
 
     methods = [
         ("Nominal DDP", "#555555", "s", "--"),
@@ -332,8 +332,8 @@ def reproduce_figure_6() -> pd.DataFrame:
     figure.legend(handles, labels, loc="upper center", ncol=5, frameon=False, fontsize=9,
                   handlelength=2.1, columnspacing=1.25)
     figure.subplots_adjust(left=.072, right=.988, bottom=.21, top=.81, wspace=.43)
-    figure.savefig(FIGURE_DIR / "figure_6_payload_robustness.png", dpi=220)
-    figure.savefig(FIGURE_DIR / "figure_6_payload_robustness.pdf")
+    figure.savefig(FIGURE_DIR / "figure_7_payload_robustness.png", dpi=220)
+    figure.savefig(FIGURE_DIR / "figure_7_payload_robustness.pdf")
     plt.close(figure)
     return summary
 
@@ -351,12 +351,12 @@ def main() -> None:
     reproduce_table_iv()
     hardware_summary = reproduce_tracking_summary()
     reproduce_table_v()
-    reproduce_figure_1()
     reproduce_figure_2()
-    reproduce_figure_4(hardware_summary)
-    from plot_circular_trajectory import reproduce_figure_5
-    reproduce_figure_5(FIGURE_DIR)
-    reproduce_figure_6()
+    reproduce_figure_3()
+    reproduce_figure_5(hardware_summary)
+    from plot_circular_trajectory import reproduce_figure_6
+    reproduce_figure_6(FIGURE_DIR)
+    reproduce_figure_7()
     print(f"Reproduced tables in {TABLE_DIR}")
     print(f"Reproduced figures in {FIGURE_DIR}")
 

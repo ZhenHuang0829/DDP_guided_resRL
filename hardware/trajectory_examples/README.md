@@ -1,7 +1,7 @@
 # Real-robot trajectory examples
 
 The gallery shows measured end-effector trajectories against the commanded
-reference for the hardware comparisons in Figs. 4 and 6. Spatial views,
+reference for the hardware comparisons in Figs. 5 and 7. Spatial views,
 planar projections, and orientation-error traces follow the original gallery.
 
 The existing controller images are retained from the original release. The
@@ -16,7 +16,7 @@ grid, and orange dashed reference and green measured-trajectory curves.
 They omit the separate plan-file curve because that signal is not included
 in the processed exports.
 
-As reported in the manuscript, the Fig. 4 comparison uses no added payload.
+As reported in the manuscript, the Fig. 5 comparison uses no added payload.
 The images are matched examples from separately recorded controller trials.
 
 These are qualitative illustrations. The reported summary values use full-motion-window

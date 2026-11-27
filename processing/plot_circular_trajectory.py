@@ -1,6 +1,6 @@
-"""Reproduce manuscript Fig. 5 from the released, already aggregated CSVs.
+"""Reproduce manuscript Fig. 6 from the released, already aggregated CSVs.
 
-Run this file directly, or import ``reproduce_figure_5(figure_dir=None)``.
+Run this file directly, or import ``reproduce_figure_6(figure_dir=None)``.
 The original plotting grid, per-method references, and scalar error averages
 are retained. No raw logs, TeX installation, or global backend changes are used.
 """
@@ -196,11 +196,11 @@ def render_plot(grid, curves, outputs):
     return geometry
 
 
-def reproduce_figure_5(figure_dir=None) -> tuple[Path, Path]:
+def reproduce_figure_6(figure_dir=None) -> tuple[Path, Path]:
     """Write the PDF and PNG and return their paths; default to released figures."""
     output_dir = Path(figure_dir) if figure_dir is not None else ROOT / "reproduced" / "figures"
     output_dir.mkdir(parents=True, exist_ok=True)
-    outputs = tuple(output_dir / f"figure_5_circular_trajectory.{suffix}" for suffix in ("pdf", "png"))
+    outputs = tuple(output_dir / f"figure_6_circular_trajectory.{suffix}" for suffix in ("pdf", "png"))
     grid, curves = _load_curves()
     render_plot(grid, curves, outputs)
     return outputs
@@ -210,7 +210,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--figure-dir", type=Path, help="Output directory for the PDF and PNG")
     args = parser.parse_args()
-    for output in reproduce_figure_5(args.figure_dir):
+    for output in reproduce_figure_6(args.figure_dir):
         print(output)
 
 

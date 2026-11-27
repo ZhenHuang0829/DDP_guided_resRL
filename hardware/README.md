@@ -1,8 +1,8 @@
 # Real-robot data
 
 This directory contains the per-trajectory metrics used in Table V and
-Figs. 4 and 6, together with the processed circular-trajectory curves for
-Fig. 5. Tracking errors are computed relative to the reference trajectory.
+Figs. 5 and 7, together with the processed circular-trajectory curves for
+Fig. 6. Tracking errors are computed relative to the reference trajectory.
 Torque quantities distinguish the commanded joint torque from the measured
 joint torque, following the notation and metric definitions in the paper.
 
@@ -14,10 +14,10 @@ metrics use time-aligned forward kinematics. Measured torque rates use finite
 differences and recorded timestamps, as in the manuscript.
 
 The [`trajectory_examples`](trajectory_examples/) directory contains direct
-reference/measurement plots for conditions included in Figs. 4 and 6.
+reference/measurement plots for conditions included in Figs. 5 and 7.
 The [`circular_trajectory`](circular_trajectory/) directory supplies the
-processed curves and summary metrics for Fig. 5. As reported in the
-manuscript, Figs. 4 and 5 describe comparisons with no added payload.
+processed curves and summary metrics for Fig. 6. As reported in the
+manuscript, Figs. 5 and 6 describe comparisons with no added payload.
 
 Table V compares holding the first filtered residual endpoint constant for
 each 10-ms policy interval against interpolation between the two filtered
@@ -25,7 +25,7 @@ endpoints at each 1-ms torque update. All other controller and experimental
 settings are identical. Its data are in [`dual_endpoint`](dual_endpoint/).
 
 The [`motion_replays`](motion_replays/) directory presents selected recorded
-joint motions as MuJoCo kinematic animations of all six Fig. 4 controllers:
+joint motions as MuJoCo kinematic animations of all six Fig. 5 controllers:
 Nominal DDP, Friction DDP, Slotine–Li, DDP+GP, Joint velocity control, and
 Proposed. A three-column, two-row layout shows all methods together, with a
 distinct color for each method and synchronized tracking-error curves.

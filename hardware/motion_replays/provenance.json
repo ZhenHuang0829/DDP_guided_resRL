@@ -883,7 +883,7 @@
     ],
     "gif_fps": 10,
     "error_plot_height_px": 272,
-    "panel_layout": "Three columns by two rows; Figure 4 method order",
+    "panel_layout": "Three columns by two rows; Figure 5 method order",
     "method_colors": {
       "nominal_ddp": "#70B8FF",
       "friction_ddp": "#F1BC57",

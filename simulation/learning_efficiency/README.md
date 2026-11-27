@@ -1,4 +1,4 @@
-# Learning efficiency (Fig. 1)
+# Learning efficiency (Fig. 2)
 
 `learning_curves.csv` contains the mean evaluation return versus cumulative
 environment transitions for Direct RL and Proposed. Direct RL was continued to
@@ -14,7 +14,7 @@ at its logged 80-million-transition budget from the preceding checkpoint, so
 the CSV contains no records between 79.2 and 80.1 million transitions and no
 values are interpolated across that interval.
 
-The Fig. 1 display follows the manuscript: its logarithmic horizontal axis
+The Fig. 2 display follows the manuscript: its logarithmic horizontal axis
 spans 0.55–110 million transitions, and the Proposed curve is shown from
 the common starting point of 0.6 million transitions. Direct RL is plotted
 in separate continuation segments; after 10 million transitions,

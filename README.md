@@ -13,7 +13,7 @@ not included.
 
 **Recorded on the physical robot, visualized in MuJoCo.** These animations
 reconstruct measured joint motions from real-robot experiments in a simulation
-model. All six controllers in Fig. 4 appear together in a three-column,
+model. All six controllers in Fig. 5 appear together in a three-column,
 two-row layout: Nominal DDP, Friction DDP, Slotine–Li, DDP+GP, Joint velocity
 control, and Proposed. Each method has its own color, with synchronized
 end-effector and joint tracking-error curves from the same records.
@@ -47,29 +47,29 @@ for the recorded traces, sampling details, and downloadable videos.
 
 ## Hardware comparisons
 
-Fig. 4 compares Nominal DDP, Friction DDP, Slotine–Li, DDP+GP,
+Fig. 5 compares Nominal DDP, Friction DDP, Slotine–Li, DDP+GP,
 Joint velocity control, and Proposed on 19 training and five held-out
 trajectories. As reported in the manuscript, this comparison uses no added
-payload. Fig. 5 shows the circular-trajectory example under the same reported
-condition, and Fig. 6 compares the five torque controllers under unmodeled
+payload. Fig. 6 shows the circular-trajectory example under the same reported
+condition, and Fig. 7 compares the five torque controllers under unmodeled
 payloads. Table V compares ZOH and interpolated residuals, with all other
 controller and experimental settings held identical.
 
-![Hardware tracking and torque comparison](reproduced/figures/figure_4_hardware_tracking_and_torque.png)
+![Hardware tracking and torque comparison](reproduced/figures/figure_5_hardware_tracking_and_torque.png)
 
-![Circular-trajectory EE tracking comparison](reproduced/figures/figure_5_circular_trajectory.png)
+![Circular-trajectory EE tracking comparison](reproduced/figures/figure_6_circular_trajectory.png)
 
 The [circular-trajectory data and plotting details](hardware/circular_trajectory/README.md)
 reproduce the XZ projection, enlarged three-dimensional view, and EE position
-error shown in Fig. 5.
+error shown in Fig. 6.
 
-![Tracking under unmodeled payloads](reproduced/figures/figure_6_payload_robustness.png)
+![Tracking under unmodeled payloads](reproduced/figures/figure_7_payload_robustness.png)
 
 ## Real-robot trajectory examples
 
 The plots below show the same joint-space sinusoidal motion with a 1.0-kg
 payload for all five methods in the payload experiment. These trials are part
-of the released per-trajectory data used in Fig. 6; the payload is outside the
+of the released per-trajectory data used in Fig. 7; the payload is outside the
 training randomization range.
 
 | Nominal DDP | Friction DDP | Slotine–Li | DDP+GP | Proposed |
@@ -77,23 +77,38 @@ training randomization range.
 | ![Nominal DDP trajectory](hardware/trajectory_examples/joint_sine_1kg_nominal_ddp.png) | ![Friction DDP trajectory](hardware/trajectory_examples/joint_sine_1kg_friction_ddp.png) | ![Slotine–Li trajectory](hardware/trajectory_examples/joint_sine_1kg_slotine_li.png) | ![DDP+GP trajectory](hardware/trajectory_examples/joint_sine_1kg_ddp_gp.png) | ![Proposed trajectory](hardware/trajectory_examples/joint_sine_1kg_proposed.png) |
 
 The [full trajectory gallery](hardware/trajectory_examples/README.md) also
-includes matched training and held-out examples from Fig. 4, planar and
+includes matched training and held-out examples from Fig. 5, planar and
 orientation-tracking tasks, and in-range and out-of-range payload examples
-from Fig. 6.
+from Fig. 7.
+
+## Manuscript figure numbering
+
+The references and output filenames in this repository follow the current
+manuscript, including the overall framework as Fig. 1.
+
+| Figure | Content | Released data or reproduction |
+|---|---|---|
+| Fig. 1 | Overall method framework | Manuscript illustration; not generated from the released experiment data |
+| Fig. 2 | Residual RL and direct torque RL learning curves | [Learning efficiency](simulation/learning_efficiency/README.md) |
+| Fig. 3 | Staged component-ablation learning curves | [Component ablation](simulation/component_ablation/README.md) |
+| Fig. 4 | Experimental setup and modular payload | Manuscript photographs; not generated from the released experiment data |
+| Fig. 5 | Tracking errors, measured torque, and torque rate | [Tracking and torque](hardware/tracking_and_torque/README.md) |
+| Fig. 6 | Circular-trajectory tracking example | [Circular trajectory](hardware/circular_trajectory/README.md) |
+| Fig. 7 | Robustness to unmodeled payloads | [Payload robustness](hardware/payload_robustness/README.md) |
 
 ## Contents
 
 ```text
 github_data/
 |-- simulation/
-|   |-- learning_efficiency/       # Fig. 1
+|   |-- learning_efficiency/       # Fig. 2
 |   |-- controller_comparison/     # Table II
-|   `-- component_ablation/        # Fig. 2 and Table IV
+|   `-- component_ablation/        # Fig. 3 and Table IV
 |-- hardware/
-|   |-- tracking_and_torque/       # Fig. 4
-|   |-- circular_trajectory/       # Fig. 5
+|   |-- tracking_and_torque/       # Fig. 5
+|   |-- circular_trajectory/       # Fig. 6
 |   |-- dual_endpoint/             # Table V
-|   |-- payload_robustness/        # Fig. 6
+|   |-- payload_robustness/        # Fig. 7
 |   |-- trajectory_examples/       # Matched real-robot trajectory plots
 |   `-- motion_replays/            # Measured robot motion replayed in MuJoCo
 |-- processing/                    # Aggregation, plotting, and validation
@@ -119,7 +134,7 @@ each fixed controller. The
 hardware tables retain every trajectory shared by the compared methods under
 the corresponding condition. Repeats are averaged within each trajectory
 before trajectories receive equal weight. As reported in the manuscript,
-the comparisons in Figs. 4 and 5 use no added payload.
+the comparisons in Figs. 5 and 6 use no added payload.
 
 ## Reproduce the results
 
@@ -132,10 +147,10 @@ python processing/plot_trajectory_examples.py
 python processing/validate_release.py
 ```
 
-The reproduction script regenerates Tables II, IV, and V and Figs. 1, 2, 4,
-5, and 6 under `reproduced/`, including the circular-trajectory plotting step.
-The Fig. 4 and Table V summaries are saved as
-[`figure_4_tracking_torque_summary.csv`](reproduced/tables/figure_4_tracking_torque_summary.csv)
+The reproduction script regenerates Tables II, IV, and V and Figs. 2, 3, 5,
+6, and 7 under `reproduced/`, including the circular-trajectory plotting step.
+The Fig. 5 and Table V summaries are saved as
+[`figure_5_tracking_torque_summary.csv`](reproduced/tables/figure_5_tracking_torque_summary.csv)
 and [`table_v_dual_endpoint_ablation.csv`](reproduced/tables/table_v_dual_endpoint_ablation.csv).
 The gallery script regenerates the added baseline
 images from the released plotting summaries. Existing controller gallery

@@ -113,7 +113,7 @@ def validate_source_files() -> None:
         ROOT / "simulation/learning_efficiency/learning_curves.csv"
     )
     if set(learning["method"]) != {"Direct RL", "Proposed"}:
-        raise AssertionError("Unexpected methods in Fig. 1 data")
+        raise AssertionError("Unexpected methods in Fig. 2 data")
     if learning["training_transitions"].min() <= 0:
         raise AssertionError("Training-transition values must be positive")
 
@@ -136,7 +136,7 @@ def validate_source_files() -> None:
     hardware_methods = {"Nominal DDP", "Friction DDP", "Slotine-Li", "DDP+GP",
                         "Joint velocity control", "Proposed"}
     if set(tracking["method"]) != hardware_methods:
-        raise AssertionError("Unexpected Fig. 4 controller set")
+        raise AssertionError("Unexpected Fig. 5 controller set")
     if set(dual_endpoint["method"]) != {"ZOH residual", "Proposed"}:
         raise AssertionError("Unexpected Table V controller set")
     for data in (tracking, dual_endpoint):
@@ -252,8 +252,8 @@ def validate_table_iv() -> None:
             assert_close(row[column], value, f"Table IV {method} {column}", tolerance)
 
 
-def validate_figure_4_summary() -> None:
-    actual = pd.read_csv(TABLES / "figure_4_tracking_torque_summary.csv")
+def validate_figure_5_summary() -> None:
+    actual = pd.read_csv(TABLES / "figure_5_tracking_torque_summary.csv")
     expected = {
         ("Training", "Nominal DDP"): (1.379, 2.419, 1.811, 1.014, 4.204, 35.993),
         ("Training", "Friction DDP"): (1.007, 2.207, 1.307, .774, 4.195, 34.916),
@@ -277,22 +277,22 @@ def validate_figure_4_summary() -> None:
         "measured_torque_rate_rms_nm_s_mean",
     ]
     if len(actual) != 12 or actual.duplicated(["set", "method"]).any():
-        raise AssertionError("Unexpected Fig. 4 summary rows")
+        raise AssertionError("Unexpected Fig. 5 summary rows")
     source = pd.read_csv(ROOT / "hardware/tracking_and_torque/per_trajectory_metrics.csv")
     for key, values in expected.items():
         row = actual[(actual["set"] == key[0]) & (actual["method"] == key[1])].iloc[0]
         samples = source[(source["set"] == key[0]) & (source["method"] == key[1])]
         for column, value in zip(columns, values):
-            assert_close(row[column], value, f"Fig. 4 {key} {column}", 5e-4)
+            assert_close(row[column], value, f"Fig. 5 {key} {column}", 5e-4)
             metric = column.removesuffix("_mean")
-            assert_close(row[column], samples[metric].mean(), f"Fig. 4 mean {key} {metric}", 1e-12)
+            assert_close(row[column], samples[metric].mean(), f"Fig. 5 mean {key} {metric}", 1e-12)
             assert_close(row[metric + "_std"], samples[metric].std(ddof=1),
-                         f"Fig. 4 between-trajectory SD {key} {metric}", 1e-12)
+                         f"Fig. 5 between-trajectory SD {key} {metric}", 1e-12)
 
 
 def validate_payload() -> None:
     """Check all twenty plotted points against the frozen paper aggregation."""
-    actual = pd.read_csv(TABLES / "figure_6_payload_summary.csv")
+    actual = pd.read_csv(TABLES / "figure_7_payload_summary.csv")
     expected = {
         "Nominal DDP": [(1.811328158, 1.013603105, 1.378674752),
                         (2.357067737, 1.031935632, 1.386208414),
@@ -324,9 +324,9 @@ def validate_payload() -> None:
             row = actual[(actual["method"] == method) & (actual["payload_kg"] == mass)].iloc[0]
             samples = source[(source["method"] == method) & (source["payload_kg"] == mass)]
             for column, value in zip(columns, values):
-                assert_close(row[column], value, f"Fig. 6 {method} {mass} {column}", 1e-8)
+                assert_close(row[column], value, f"Fig. 7 {method} {mass} {column}", 1e-8)
                 assert_close(row[column], samples[column].mean(),
-                             f"Fig. 6 equal trajectory weighting {method} {mass} {column}", 1e-12)
+                             f"Fig. 7 equal trajectory weighting {method} {mass} {column}", 1e-12)
 
 
 def validate_table_v() -> None:
@@ -352,13 +352,13 @@ def validate_table_v() -> None:
 
 
 def validate_circular_trajectory() -> None:
-    """Check Fig. 5 provenance, repeat means, and full-rate paper statistics."""
+    """Check Fig. 6 provenance, repeat means, and full-rate paper statistics."""
     folder = ROOT / "hardware/circular_trajectory"
     provenance = json.loads((folder / "provenance.json").read_text(encoding="utf-8"))
     for record in provenance["released_data"]:
         actual_hash = hashlib.sha256((folder / record["filename"]).read_bytes()).hexdigest()
         if actual_hash != record["sha256"] or actual_hash != record["source_sha256"]:
-            raise AssertionError(f"Fig. 5 source hash mismatch: {record['filename']}")
+            raise AssertionError(f"Fig. 6 source hash mismatch: {record['filename']}")
     from plot_circular_trajectory import _load_curves
     _, curves = _load_curves()
     for method, curve in curves.items():
@@ -366,7 +366,7 @@ def validate_circular_trajectory() -> None:
         reference = np.column_stack([curve[f"{axis}_ref_m"] for axis in "xyz"])
         # Averaged scalar errors must bound the error of the averaged paths.
         if (np.linalg.norm(actual-reference, axis=1)*1000 > curve["ee_mm"] + 1e-8).any():
-            raise AssertionError(f"Fig. 5 scalar-error averaging is inconsistent: {method}")
+            raise AssertionError(f"Fig. 6 scalar-error averaging is inconsistent: {method}")
     stats = pd.read_csv(folder / "selected_case_metrics.csv")
     source = pd.read_csv(ROOT / "hardware/tracking_and_torque/per_trajectory_metrics.csv")
     source = source[(source["set"] == "Training") & (source["trajectory"] == "Circular joint-space motion")]
@@ -374,19 +374,19 @@ def validate_circular_trajectory() -> None:
         label = row["label"].replace("Slotine--Li", "Slotine-Li")
         reference = source[source["method"] == label]
         if len(reference) != 1:
-            raise AssertionError(f"Missing Fig. 5 full-rate summary: {label}")
+            raise AssertionError(f"Missing Fig. 6 full-rate summary: {label}")
         for actual, expected in (("ee_mean_mm", "ee_position_mean_mm"),
                                  ("ori_mean_deg", "ee_orientation_mean_deg"),
                                  ("joint_position_rmse_deg", "joint_position_rms_deg")):
-            assert_close(row[actual], reference.iloc[0][expected], f"Fig. 5 {label} {actual}", 1e-6)
+            assert_close(row[actual], reference.iloc[0][expected], f"Fig. 6 {label} {actual}", 1e-6)
     values = stats.set_index("method")["ee_mean_mm"]
-    assert_close(values["ab05_residual_rl"], .311, "Fig. 5 Proposed", 5e-4)
-    assert_close(values["ddp_gp"], .584, "Fig. 5 DDP+GP", 5e-4)
-    assert_close(100*(1-values["ab05_residual_rl"]/values["ddp_gp"]), 46.8, "Fig. 5 reduction (%)", .05)
+    assert_close(values["ab05_residual_rl"], .311, "Fig. 6 Proposed", 5e-4)
+    assert_close(values["ddp_gp"], .584, "Fig. 6 DDP+GP", 5e-4)
+    assert_close(100*(1-values["ab05_residual_rl"]/values["ddp_gp"]), 46.8, "Fig. 6 reduction (%)", .05)
     for extension in ("pdf", "png"):
-        path = ROOT / "reproduced/figures" / f"figure_5_circular_trajectory.{extension}"
+        path = ROOT / "reproduced/figures" / f"figure_6_circular_trajectory.{extension}"
         if not path.is_file() or path.stat().st_size == 0:
-            raise AssertionError(f"Missing Fig. 5 output: {path.name}")
+            raise AssertionError(f"Missing Fig. 6 output: {path.name}")
 
 
 def validate_gallery() -> None:
@@ -465,7 +465,7 @@ def main() -> None:
     validate_source_files()
     validate_table_ii()
     validate_table_iv()
-    validate_figure_4_summary()
+    validate_figure_5_summary()
     validate_table_v()
     validate_circular_trajectory()
     validate_payload()

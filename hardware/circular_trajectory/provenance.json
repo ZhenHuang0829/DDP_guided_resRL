@@ -1,5 +1,5 @@
 {
-  "figure": "Figure 5: EE position tracking on a circular trajectory",
+  "figure": "Figure 6: EE position tracking on a circular trajectory",
   "data_origin": "Recorded real-robot measurements and recorded references; no simulated trajectories are substituted.",
   "released_data": [
     {

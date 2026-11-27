@@ -224,7 +224,7 @@ def import_archive(source, extra_sources, summary, evidence, output, model, data
 
 def load_case(case, output, model, data, site):
     if [r["method"] for r in case["runs"]] != [m[1] for m in METHODS]:
-        raise ValueError("Replay must contain all six Figure 4 methods in the declared panel order")
+        raise ValueError("Replay must contain all six Figure 5 methods in the declared panel order")
     runs = []
     for record in case["runs"]:
         path = output / record["file"]
@@ -471,7 +471,7 @@ def main():
             manifest["renderer"] = {"script": Path(__file__).name, "sha256": digest(__file__), "mujoco_version": mujoco.__version__,
                                     "dimensions": [WIDTH, HEIGHT], "gif_dimensions": [960, HEIGHT//2], "gif_fps": 10,
                                     "error_plot_height_px": PLOT_HEIGHT,
-                                    "panel_layout": "Three columns by two rows; Figure 4 method order",
+                                    "panel_layout": "Three columns by two rows; Figure 5 method order",
                                     "method_colors": {m[1]: m[3] for m in METHODS},
                                     "font_request": args.font.name if args.font else "Platform Arial/DejaVu Sans fallback"}
             manifest["source_model"]["bundled_file"] = "model/panda_nohand.xml"

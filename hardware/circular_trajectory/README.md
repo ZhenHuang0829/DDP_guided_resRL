@@ -1,4 +1,4 @@
-# Circular trajectory: Figure 5
+# Circular trajectory: Figure 6
 
 These files reproduce the manuscript's circular-trajectory comparison with no added payload, using recorded real-robot measurements. The six controllers and all available repetitions are retained: three runs each for Slotine–Li and DDP+GP, and one run each for Nominal DDP, Friction DDP, Joint velocity control, and Proposed.
 
@@ -16,6 +16,6 @@ From the repository root, run:
 python processing/plot_circular_trajectory.py
 ```
 
-The script requires only NumPy, pandas, and Matplotlib and writes `reproduced/figures/figure_5_circular_trajectory.pdf` and `.png`. It also provides `reproduce_figure_5(figure_dir=None)` for the main reproduction script and accepts `--figure-dir` on the command line. It uses a local Agg canvas without changing the importing program's backend, and preserves the manuscript's panel proportions, axis limits, colors, line styles, legend, and annotations. Times New Roman is used when installed, with STIXGeneral as the fallback; no TeX installation is required.
+The script requires only NumPy, pandas, and Matplotlib and writes `reproduced/figures/figure_6_circular_trajectory.pdf` and `.png`. It also provides `reproduce_figure_6(figure_dir=None)` for the main reproduction script and accepts `--figure-dir` on the command line. It uses a local Agg canvas without changing the importing program's backend, and preserves the manuscript's panel proportions, axis limits, colors, line styles, legend, and annotations. Times New Roman is used when installed, with STIXGeneral as the fallback; no TeX installation is required.
 
 `provenance.json` records byte-identical source CSV hashes, the original selection and aggregation rules, all included runs and plotting windows, reference checks, and source-renderer hashes. Historical source basenames identify audited inputs, not additional downloadable files. Reproduction does not read the historical logs or manuscript directory.

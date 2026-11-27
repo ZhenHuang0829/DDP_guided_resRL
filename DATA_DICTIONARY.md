@@ -6,7 +6,7 @@
   paper.
 - `evaluation` numbers the three repeated evaluations used to compute the
   reported mean and sample standard deviation.
-- `set` is either `Training` or `Held-out`, as in Fig. 4 and Table V.
+- `set` is either `Training` or `Held-out`, as in Fig. 5 and Table V.
 - `trajectory` is a descriptive trajectory name. Held-out names match the five
   tasks listed in the hardware setup section of the paper.
 - `RMS` denotes root mean square. Angles are in degrees unless otherwise noted.
@@ -56,7 +56,7 @@ The cumulative names `W.`, `Rec.`, and `ID` denote reward shaping with DDP
 value information, the recurrent encoder, and inverse-dynamics supervision,
 respectively, as defined in Table III of the paper.
 
-## Hardware tracking and torque file (Fig. 4)
+## Hardware tracking and torque file (Fig. 5)
 
 | Column | Meaning |
 |---|---|
@@ -73,18 +73,18 @@ respectively, as defined in Table III of the paper.
 | `measured_torque_rate_p99_nm_s` | 99th percentile of absolute measured torque rate, averaged over joints. |
 | `measured_torque_rate_peak_nm_s` | Peak absolute measured torque rate. |
 
-Fig. 4 uses joint-position and velocity RMSE, mean EE
+Fig. 5 uses joint-position and velocity RMSE, mean EE
 position and orientation error, measured-torque RMS, and measured-torque-rate
 RMS. The remaining columns are retained supplementary metrics from the
 original schema. EE errors are time means of Euclidean position distance and
 relative-rotation angle. Measured torque rates use finite differences at the
 recorded timestamps before per-joint RMS and seven-joint averaging.
 
-As reported in the manuscript, Fig. 4 presents the comparison with no added
+As reported in the manuscript, Fig. 5 presents the comparison with no added
 payload. The aggregated output is
-[`figure_4_tracking_torque_summary.csv`](reproduced/tables/figure_4_tracking_torque_summary.csv).
+[`figure_5_tracking_torque_summary.csv`](reproduced/tables/figure_5_tracking_torque_summary.csv).
 
-## Hardware circular-trajectory data (Fig. 5)
+## Hardware circular-trajectory data (Fig. 6)
 
 The processed curves and summary metrics under
 [`hardware/circular_trajectory/`](hardware/circular_trajectory/README.md)
@@ -145,7 +145,7 @@ identical. The aggregated output is
 | `ee_orientation_mean_deg` | Mean end-effector orientation error. |
 | `joint_position_rms_deg` | Joint-position RMS error averaged over joints. |
 
-Fig. 6 averages the same 19 training trajectories for each of the five
+Fig. 7 averages the same 19 training trajectories for each of the five
 methods at 0, 0.2, 0.6, and 1.0 kg. For the added baselines, each zero-mass
 trajectory averages three runs and each loaded trajectory uses one run.
 

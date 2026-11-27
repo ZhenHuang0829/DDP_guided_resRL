@@ -2,7 +2,7 @@
 
 These animations replay **measured real-robot joint positions** in a MuJoCo
 model. They are not camera recordings or new controller simulations. All six
-controllers in Fig. 4 appear in a three-column, two-row layout: Nominal DDP,
+controllers in Fig. 5 appear in a three-column, two-row layout: Nominal DDP,
 Friction DDP, Slotine–Li, DDP+GP, Joint velocity control, and Proposed. Playback
 uses the original speed, the same camera, shared elapsed command time, and
 common error axes. Each method has a distinct color, and each view retains
